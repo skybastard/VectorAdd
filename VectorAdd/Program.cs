@@ -14,14 +14,14 @@ namespace VectorAdd
 
             
             double vec1magnitude = 36;
-            double vec1angle = 123;
+            double vec1angle = 290;
             double vec1X = vec1magnitude * Math.Cos(vec1angle * (Math.PI / 180)); // to deg from radians
             double vec1Y = vec1magnitude * Math.Sin(vec1angle * (Math.PI / 180));
             
             Vector vector1 = new Vector(vec1X, vec1Y);
 
             double vec2magnitude = 83;
-            double vec2angle = 57;
+            double vec2angle = 265;
             double vec2X = vec2magnitude * Math.Cos(vec2angle * (Math.PI / 180));
             double vec2Y = vec2magnitude * Math.Sin(vec2angle * (Math.PI / 180));
 
@@ -31,7 +31,16 @@ namespace VectorAdd
             resultVector = Vector.Add(vector1, vector2);
 
             double resultMagnitude = Math.Sqrt(Math.Pow(resultVector.X, 2) + Math.Pow(resultVector.Y, 2));
-            double resultAngle = Math.Atan(resultVector.Y / resultVector.X) * (180 / Math.PI);
+            //double resultAngle = Math.Atan(resultVector.Y / resultVector.X) * (180 / Math.PI);
+            Vector xAxis = new Vector(3, 0);
+            double resultAngle = Vector.AngleBetween(xAxis, resultVector);
+            //if(resultAngle > 90 && resultAngle < 180)
+            //{
+            //    resultAngle += 180;
+            //}else if(resultAngle > 180)
+            //{
+            //    resultAngle -= 180;
+            //}
             Console.WriteLine("X and Y components:  " + resultVector);
             Console.WriteLine("Magnitude:  " + resultMagnitude);
             Console.WriteLine("Angle:  " + resultAngle);
